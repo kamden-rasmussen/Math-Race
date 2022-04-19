@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- style from style.css  -->
+        <link rel="stylesheet" href="style.css" />
+
+        <title>Math Quiz</title>
+    </head>
+    <body>
+        <div id="app">
+            <div id="strecher" v-if="!gameOver">
+                <div class="main">
+                    <h1>Math Race</h1>
+                    <h1>{{countDownTimer}}</h1>
+                    <h2>{{ errorMessage }}</h2>
+                </div>
+                <div id="tracker" v-if="mainView">
+                    {{playerOne}}'s Score = {{playerOneScore}}<br />
+                    {{playerTwo}}'s Score = {{playerTwoScore}}
+                </div>
+
+                <div id="interaction">
+                    <div v-if="running">
+                        <h2>{{ numOne }} x {{ numTwo }}</h2>
+                        <input
+                            type="text"
+                            id="answerInput"
+                            v-model="individualsGuess"
+                        />
+                        <button v-on:click="checkAnswer">Check Answer</button>
+                    </div>
+                    <div v-else>
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            v-model="playerName"
+                        />
+                        <button v-on:click="readyUp">Ready</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main" v-else>
+                <h1>{{ errorMessage }}</h1>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+#strecher {
+    display: grid;
+    grid-auto-rows: minmax(0px, auto);
+    grid-template-columns: minmax(0px, 1fr) repeat(3, minmax(0, 2fr)) minmax(
+            0px,
+            1fr
+        );
+}
+
+.main {
+    grid-column: 3 / span 4;
+}
+#tracker {
+    grid-column: 2 / span 3;
+}
+#interaction {
+    grid-column: 4 / span 5;
+}
