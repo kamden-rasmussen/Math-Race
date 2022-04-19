@@ -1,4 +1,5 @@
-var server = "ws://localhost:8080";
+// var server = "ws://localhost:8080";
+var server = "ws://mathquizwebsockets.herokuapp.com";
 
 var app = new Vue({
     el: "#app",
