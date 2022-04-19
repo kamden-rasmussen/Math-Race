@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 const app = express();
-app.use(express.static("client"));
+app.use("client");
 
-const WebSocket = require("ws");
-const wss = new WebSocket.Server({ port: 8080 });
+import { Server } from "ws";
+const wss = new Server({ port: 8080 });
 
 var player1 = {
     name: "",
