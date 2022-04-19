@@ -7,7 +7,7 @@ server = app.listen(PORT);
 app.use(express.static("client"));
 
 const WebSocket = require("ws");
-const wss = new WebSocket.Server(server);
+const wss = new WebSocket.Server({ server });
 
 var player1 = {
     name: "",
