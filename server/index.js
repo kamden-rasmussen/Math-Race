@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 8080;
 const app = express(PORT);
 server = app.listen(PORT);
 
-app.use("client");
+app.use(express.static("client"));
 
 const WebSocket = require("ws");
 const wss = new WebSocket.Server(server);
