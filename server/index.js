@@ -1,7 +1,11 @@
 const express = require("express");
-const app = express();
+
+const PORT = process.env.PORT || 8080;
+const app = express(PORT);
+
 app.use("client");
 
+const WebSocket = require("ws");
 import { Server } from "ws";
 const wss = new Server({ port: 8080 });
 
