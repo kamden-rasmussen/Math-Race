@@ -2,12 +2,12 @@ const express = require("express");
 
 const PORT = process.env.PORT || 8080;
 const app = express(PORT);
+server = app.listen(PORT);
 
 app.use("client");
 
 const WebSocket = require("ws");
-import { Server } from "ws";
-const wss = new Server({ port: 8080 });
+const wss = new WebSocket(server);
 
 var player1 = {
     name: "",
