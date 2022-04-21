@@ -1,5 +1,5 @@
-var server = "ws://localhost:8080";
-// var server = "wss://mathquizwebsockets.herokuapp.com";
+// var server = "ws://localhost:8080";
+var server = "wss://mathquizwebsockets.herokuapp.com";
 
 var app = new Vue({
     el: "#app",
@@ -88,6 +88,7 @@ var app = new Vue({
                             " wins with a score of " +
                             data.score +
                             "!";
+                        console.log(app.errorMessage);
                         break;
                 }
             };
@@ -149,16 +150,6 @@ var app = new Vue({
                 type: "timeUp",
             };
             this.socket.send(JSON.stringify(message));
-
-            //     this.running = false;
-            //     this.mainView = false;
-            //     this.gameOver = true;
-            //     if (this.playerOneData.score > this.playerTwoData.score) {
-            //         this.errorMessage = this.playerOneData.name + " wins!";
-            //     }
-            //     if (this.playerTwoData.score > this.playerOneData.score) {
-            //         this.errorMessage = this.playerTwoData.name + " wins!";
-            //     }
         },
     },
 

@@ -98,6 +98,7 @@ wss.on("connection", function connection(ws) {
                     var message = {
                         type: "gameOver",
                         winner: "tie",
+                        score: player1.score,
                     };
                 }
                 wss.clients.forEach((client) => {
