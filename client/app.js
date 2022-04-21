@@ -1,5 +1,5 @@
-// var server = "ws://localhost:8080";
-var server = "wss://mathquizwebsockets.herokuapp.com";
+var server = "ws://localhost:8080";
+// var server = "wss://mathquizwebsockets.herokuapp.com";
 
 var app = new Vue({
     el: "#app",
@@ -14,6 +14,7 @@ var app = new Vue({
         running: false,
         gameOver: false,
         mainView: true,
+        pending: true,
         numOne: "",
         numTwo: "",
         playerName: "",
@@ -48,7 +49,8 @@ var app = new Vue({
                 switch (data.type) {
                     case "allReady":
                         console.log("All Ready");
-
+                        app.pending = true;
+                        app.errorMessage = "";
                         app.playerTwoData = data.playerTwo;
                         app.playerOneData = data.playerOne;
 
@@ -67,6 +69,13 @@ var app = new Vue({
                         app.playerOneScore = app.playerOneData.score;
                         app.playerTwoScore = app.playerTwoData.score;
                         break;
+
+                    case "player1":
+                        console.log("Received Player 1");
+                        app.playerOneData = data.player;
+                        app.playerOne = app.playerOneData.name;
+                        app.pending = false;
+                        app.errorMessage = "Waiting for Player 2";
                 }
             };
         },

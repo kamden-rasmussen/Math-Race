@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+            rel="stylesheet"
+        />
 
         <title>Math Quiz</title>
     </head>
@@ -11,23 +17,26 @@
         <div id="app">
             <div id="strecher" v-if="!gameOver">
                 <div class="main">
+                    <p>Build your tower faster than your opponent</p>
+                    <p>Complete more than your opponent</p>
+                    <p>in the time given to win</p>
+                    <hr />
                     <h1>Math Race</h1>
                     <h1>{{countDownTimer}}</h1>
                     <h2>{{ errorMessage }}</h2>
-                </div>
-                <div id="tracker" v-if="mainView">
-                    {{playerOne}}'s Score = {{playerOneScore}}<br />
-                    {{playerTwo}}'s Score = {{playerTwoScore}}
-                </div>
+                    <br />
+                    <br />
+                    <br />
 
-                <div id="interaction">
-                    <div v-if="running">
+                    <div id="activity" v-if="running">
                         <h2>{{ numOne }} x {{ numTwo }}</h2>
                         <input
                             type="text"
                             id="answerInput"
                             v-model="individualsGuess"
                         />
+
+                        <br />
                         <button v-on:click="checkAnswer">Check Answer</button>
                     </div>
                     <div v-else>
@@ -36,9 +45,85 @@
                             placeholder="Name"
                             v-model="playerName"
                         />
+                        <br />
                         <button v-on:click="readyUp">Ready</button>
                     </div>
                 </div>
+                <div id="section1" v-if="mainView">
+                    <h2>{{playerOne}}'s Score = {{playerOneScore}}</h2>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                </div>
+
+                <div id="section2" v-if="mainView">
+                    <h2>{{playerTwo}}'s Score = {{playerTwoScore}}</h2>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                    <div>|_______________________________|</div>
+                </div>
+
+                <div id="interaction" v-if="pending"></div>
             </div>
             <div class="main" v-else>
                 <h1>{{ errorMessage }}</h1>
