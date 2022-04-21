@@ -22,13 +22,17 @@
                     <p>in the time given to win</p>
                     <hr />
                     <h1>Math Race</h1>
-                    <h1>{{countDownTimer}}</h1>
+
                     <h2>{{ errorMessage }}</h2>
                     <br />
                     <br />
                     <br />
 
                     <div id="activity" v-if="running">
+                        <h1>{{countDownTimer}}</h1>
+                        <br />
+                        <br />
+                        <br />
                         <h2>{{ numOne }} x {{ numTwo }}</h2>
                         <input
                             type="text"
@@ -52,7 +56,10 @@
                 <div id="section1" v-if="mainView">
                     <h2>{{playerOne}}'s Score = {{playerOneScore}}</h2>
                     <img class="tower" src="media/base.svg" alt="base" />
-                    <div v-for="score in playerOneScore">
+                    <div
+                        v-for="score in playerOneScore"
+                        v-if="playerOneScore > 0"
+                    >
                         <img class="tower" src="media/level.svg" alt="level" />
                     </div>
                 </div>
@@ -60,7 +67,10 @@
                 <div id="section2" v-if="mainView">
                     <h2>{{playerTwo}}'s Score = {{playerTwoScore}}</h2>
                     <img class="tower" src="media/base.svg" alt="base" />
-                    <div v-for="score in playerTwoScore">
+                    <div
+                        v-for="score in playerTwoScore"
+                        v-if="playerTwoScore > 0"
+                    >
                         <img class="tower" src="media/level.svg" alt="level" />
                     </div>
                 </div>

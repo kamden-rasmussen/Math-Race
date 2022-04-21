@@ -107,4 +107,22 @@ wss.on("connection", function connection(ws) {
                 break;
         }
     });
+    ws.on("close", () => {
+        console.log("Client Disconnected");
+        player1 = {
+            name: "",
+            score: 0,
+        };
+        player2 = {
+            name: "",
+            score: 0,
+        };
+        wss.clients.forEach((client) => {
+            client.send(
+                JSON.stringify({
+                    type: "startOver",
+                })
+            );
+        });
+    });
 });

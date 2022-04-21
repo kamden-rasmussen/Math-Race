@@ -1,5 +1,5 @@
-// var server = "ws://localhost:8080";
-var server = "wss://mathquizwebsockets.herokuapp.com";
+var server = "ws://localhost:8080";
+// var server = "wss://mathquizwebsockets.herokuapp.com";
 
 var app = new Vue({
     el: "#app",
@@ -89,6 +89,16 @@ var app = new Vue({
                             data.score +
                             "!";
                         console.log(app.errorMessage);
+                        break;
+
+                    case "startOver":
+                        console.log("Start Over");
+                        // app.endGame();
+                        app.gameOver = false;
+                        app.running = false;
+                        app.mainView = true;
+                        app.errorMessage =
+                            "A User has disconected. Please refresh the page.";
                         break;
                 }
             };
