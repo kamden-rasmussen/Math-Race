@@ -18,6 +18,15 @@ var player2 = {
     score: 0,
 };
 wss.on("connection", function connection(ws) {
+    if (player1.name != "" && player2.name != "") {
+        ws.send(
+            JSON.stringify({
+                type: "tooManyPlayers",
+            })
+        );
+        return;
+    }
+
     ws.on("message", (message) => {
         const data = JSON.parse(message);
         console.log("Parsed Data: ", data);

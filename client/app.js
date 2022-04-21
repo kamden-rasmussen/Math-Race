@@ -100,6 +100,13 @@ var app = new Vue({
                         app.errorMessage =
                             "A User has disconected. Please refresh the page.";
                         break;
+
+                    case "tooManyPlayers":
+                        app.running = false;
+                        app.mainView = false;
+                        app.gameOver = true;
+                        app.errorMessage = "Too many players. Please refresh.";
+                        break;
                 }
             };
         },
