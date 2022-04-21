@@ -78,6 +78,32 @@ wss.on("connection", function connection(ws) {
                         })
                     );
                 });
+                break;
+
+            case "timeUp":
+                console.log("Time Up");
+                if (player1.score > player2.score) {
+                    var message = {
+                        type: "gameOver",
+                        winner: player1.name,
+                        score: player1.score,
+                    };
+                } else if (player1.score < player2.score) {
+                    var message = {
+                        type: "gameOver",
+                        winner: player2.name,
+                        score: player2.score,
+                    };
+                } else {
+                    var message = {
+                        type: "gameOver",
+                        winner: "tie",
+                    };
+                }
+                wss.clients.forEach((client) => {
+                    client.send(JSON.stringify(message));
+                });
+                break;
         }
     });
 });

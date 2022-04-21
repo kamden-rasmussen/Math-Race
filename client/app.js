@@ -76,6 +76,19 @@ var app = new Vue({
                         app.playerOne = app.playerOneData.name;
                         app.pending = false;
                         app.errorMessage = "Waiting for Player 2";
+                        break;
+
+                    case "gameOver":
+                        console.log("Game Over");
+                        app.running = false;
+                        app.mainView = false;
+                        app.gameOver = true;
+                        app.errorMessage =
+                            data.winner +
+                            " wins with a score of " +
+                            data.score +
+                            "!";
+                        break;
                 }
             };
         },
@@ -132,15 +145,20 @@ var app = new Vue({
             }, 1000);
         },
         endGame: function () {
-            this.running = false;
-            this.mainView = false;
-            this.gameOver = true;
-            if (this.playerOneData.score > this.playerTwoData.score) {
-                this.errorMessage = this.playerOneData.name + " wins!";
-            }
-            if (this.playerTwoData.score > this.playerOneData.score) {
-                this.errorMessage = this.playerTwoData.name + " wins!";
-            }
+            var message = {
+                type: "timeUp",
+            };
+            this.socket.send(JSON.stringify(message));
+
+            //     this.running = false;
+            //     this.mainView = false;
+            //     this.gameOver = true;
+            //     if (this.playerOneData.score > this.playerTwoData.score) {
+            //         this.errorMessage = this.playerOneData.name + " wins!";
+            //     }
+            //     if (this.playerTwoData.score > this.playerOneData.score) {
+            //         this.errorMessage = this.playerTwoData.name + " wins!";
+            //     }
         },
     },
 
