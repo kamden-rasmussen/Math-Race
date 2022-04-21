@@ -37,13 +37,14 @@
                         <input
                             type="text"
                             id="answerInput"
+                            v-on:keydown.enter="checkAnswer"
                             v-model="individualsGuess"
                         />
 
                         <br />
                         <button v-on:click="checkAnswer">Check Answer</button>
                     </div>
-                    <div v-else>
+                    <div v-if="pending" v-if="!running">
                         <input
                             type="text"
                             placeholder="Name"

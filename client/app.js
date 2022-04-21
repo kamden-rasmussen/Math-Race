@@ -49,7 +49,7 @@ var app = new Vue({
                 switch (data.type) {
                     case "allReady":
                         console.log("All Ready");
-                        app.pending = true;
+                        app.pending = false;
                         app.errorMessage = "";
                         app.playerTwoData = data.playerTwo;
                         app.playerOneData = data.playerOne;
